@@ -46,7 +46,7 @@ services:
       config:
         condition: service_healthy
     ports:
-      - "127.0.0.1:80:4000"
+      - "80:4000"
     expose:
       - "80"
     logging:
