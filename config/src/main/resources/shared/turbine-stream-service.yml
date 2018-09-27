@@ -1,0 +1,5 @@
+server:
+  port: 8989
+turbine:
+  app-config: account-service,notification-service,statistics-service
+  cluster-name-expression: new String("default")
