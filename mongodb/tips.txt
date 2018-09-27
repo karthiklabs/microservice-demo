@@ -1,0 +1,23 @@
+db.users.find( {} )
+
+db.users.deleteMany({})
+
+db.users.deleteOne({_id: "karthik"})
+
+db.users.insertOne({ username: 'user', password: $MONGODB_PASSWORD, roles: [ {role:'readWrite', db:'piggymetrics'} ]})
+
+db.users.insertOne({ username: 'demo', password: 'password')
+
+mongo piggymetrics --eval "if (!db.getUser('user')) { db.createUser({ user: 'user', pwd: '$MONGODB_PASSWORD', roles: [ {role:'readWrite', db:'piggymetrics'} ]}) }" || mongo piggymetrics -u user -p $MONGODB_PASSWORD --eval "if (!db.getUser('user')) { db.createUser({ user: 'user', pwd: '$MONGODB_PASSWORD', roles: [ {role:'readWrite', db:'piggymetrics'} ]}) }"
+
+mongo -u $MONGODB_USER -p $MONGODB_PASSWORD $MONGODB_DATABASE
+
+mongo -u user -p $MONGODB_PASSWORD piggymetrics
+
+db.accounts.find( {} )
+
+db.accounts.deleteOne({_id: "demo"})
+
+db.createUser({ user: 'user', pwd: 'password', roles: [ {role:'readWrite', db:'piggymetrics'} ]})
+
+db.recipients.find( {} )
